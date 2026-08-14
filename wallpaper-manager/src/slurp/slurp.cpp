@@ -2,6 +2,7 @@
 #include <windows.h>
 #include <sstream>
 #include <algorithm>
+#include <cmath>
 
 // Define GET_X_LPARAM and GET_Y_LPARAM if not available
 #ifndef GET_X_LPARAM
@@ -197,8 +198,8 @@ void SlurpWin::on_mouse_up(int x, int y) {
     current_y = y;
     
     // Calculate final selection
-    result.x = std::min(start_x, current_x);
-    result.y = std::min(start_y, current_y);
+    result.x = (std::min)(start_x, current_x);
+    result.y = (std::min)(start_y, current_y);
     result.width = std::abs(current_x - start_x);
     result.height = std::abs(current_y - start_y);
     
