@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/workspace/wallpaper-manager/vendor -I/workspace/wallpaper-manager/include
+CXX_INCLUDES = -I/workspace/wallpaper-manager/vendor/sqlite -I/workspace/wallpaper-manager/include
 
 CXX_FLAGS = -std=gnu++17
 

@@ -1,5 +1,6 @@
 #include "database.h"
 #include "utils.h"
+#include <sqlite3.h>
 #include <sstream>
 #include <algorithm>
 

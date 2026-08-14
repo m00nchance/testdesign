@@ -451,29 +451,29 @@ src/slurp/slurp.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/slurp-win.dir/build.make CMakeFiles/slurp-win.dir/src/slurp/slurp.cpp.s
 .PHONY : src/slurp/slurp.cpp.s
 
-vendor/sqlite3.o: vendor/sqlite3.c.o
-.PHONY : vendor/sqlite3.o
+vendor/sqlite/sqlite3.o: vendor/sqlite/sqlite3.c.o
+.PHONY : vendor/sqlite/sqlite3.o
 
 # target to build an object file
-vendor/sqlite3.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3.dir/build.make CMakeFiles/sqlite3.dir/vendor/sqlite3.c.o
-.PHONY : vendor/sqlite3.c.o
+vendor/sqlite/sqlite3.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3.dir/build.make CMakeFiles/sqlite3.dir/vendor/sqlite/sqlite3.c.o
+.PHONY : vendor/sqlite/sqlite3.c.o
 
-vendor/sqlite3.i: vendor/sqlite3.c.i
-.PHONY : vendor/sqlite3.i
+vendor/sqlite/sqlite3.i: vendor/sqlite/sqlite3.c.i
+.PHONY : vendor/sqlite/sqlite3.i
 
 # target to preprocess a source file
-vendor/sqlite3.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3.dir/build.make CMakeFiles/sqlite3.dir/vendor/sqlite3.c.i
-.PHONY : vendor/sqlite3.c.i
+vendor/sqlite/sqlite3.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3.dir/build.make CMakeFiles/sqlite3.dir/vendor/sqlite/sqlite3.c.i
+.PHONY : vendor/sqlite/sqlite3.c.i
 
-vendor/sqlite3.s: vendor/sqlite3.c.s
-.PHONY : vendor/sqlite3.s
+vendor/sqlite/sqlite3.s: vendor/sqlite/sqlite3.c.s
+.PHONY : vendor/sqlite/sqlite3.s
 
 # target to generate assembly for a file
-vendor/sqlite3.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3.dir/build.make CMakeFiles/sqlite3.dir/vendor/sqlite3.c.s
-.PHONY : vendor/sqlite3.c.s
+vendor/sqlite/sqlite3.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3.dir/build.make CMakeFiles/sqlite3.dir/vendor/sqlite/sqlite3.c.s
+.PHONY : vendor/sqlite/sqlite3.c.s
 
 # Help Target
 help:
@@ -519,9 +519,9 @@ help:
 	@echo "... src/slurp/slurp.o"
 	@echo "... src/slurp/slurp.i"
 	@echo "... src/slurp/slurp.s"
-	@echo "... vendor/sqlite3.o"
-	@echo "... vendor/sqlite3.i"
-	@echo "... vendor/sqlite3.s"
+	@echo "... vendor/sqlite/sqlite3.o"
+	@echo "... vendor/sqlite/sqlite3.i"
+	@echo "... vendor/sqlite/sqlite3.s"
 .PHONY : help
 
 

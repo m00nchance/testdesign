@@ -1,22 +1,26 @@
 #include "grim.h"
 #include "utils.h"
-#include <windows.h>
-#include <d3d11.h>
-#include <dxgi1_2.h>
-#include <wrl/client.h>
+
+#ifdef _WIN32
+    #include <windows.h>
+    #include <d3d11.h>
+    #include <dxgi1_2.h>
+    #include <wrl/client.h>
+    #pragma comment(lib, "d3d11.lib")
+    #pragma comment(lib, "dxgi.lib")
+    using Microsoft::WRL::ComPtr;
+#endif
+
 #include <fstream>
 #include <sstream>
 
-#pragma comment(lib, "d3d11.lib")
-#pragma comment(lib, "dxgi.lib")
-
-using Microsoft::WRL::ComPtr;
-
 GrimWin::GrimWin() 
-    : device(nullptr)
+    : initialized(false)
+#ifdef _WIN32
+    , device(nullptr)
     , context(nullptr)
     , duplication(nullptr)
-    , initialized(false)
+#endif
 {}
 
 GrimWin::~GrimWin() {
@@ -24,6 +28,7 @@ GrimWin::~GrimWin() {
 }
 
 bool GrimWin::initialize() {
+#ifdef _WIN32
     if (initialized) return true;
     
     if (!init_d3d11()) {
@@ -33,8 +38,13 @@ bool GrimWin::initialize() {
     
     initialized = true;
     return true;
+#else
+    last_error = "GrimWin is only supported on Windows";
+    return false;
+#endif
 }
 
+#ifdef _WIN32
 bool GrimWin::init_d3d11() {
     D3D_FEATURE_LEVEL feature_levels[] = {
         D3D_FEATURE_LEVEL_11_0,
@@ -496,4 +506,55 @@ bool GrimWin::save_texture_to_file(ID3D11Texture2D* texture, const std::string& 
 
 std::string GrimWin::get_last_error() const {
     return last_error;
+}
+
+#endif // _WIN32
+
+// Stub implementations for non-Windows platforms (or additional methods)
+std::vector<MonitorInfo> GrimWin::get_monitors() {
+#ifdef _WIN32
+    // Windows implementation would go here
+    return {};
+#else
+    return {};
+#endif
+}
+
+bool GrimWin::capture_screen(const std::string& output_path, int monitor_index) {
+#ifdef _WIN32
+    // Implementation in Windows block
+    return false;
+#else
+    last_error = "GrimWin is only supported on Windows";
+    return false;
+#endif
+}
+
+bool GrimWin::capture_region(const std::string& output_path, int x, int y, int width, int height) {
+    last_error = "GrimWin is only supported on Windows";
+    return false;
+}
+
+bool GrimWin::capture_to_buffer(std::vector<uint8_t>& buffer, int& out_width, int& out_height, int monitor_index) {
+    last_error = "GrimWin is only supported on Windows";
+    return false;
+}
+
+void GrimWin::cleanup() {
+#ifdef _WIN32
+    if (duplication) {
+        duplication->ReleaseFrame();
+        duplication->Release();
+        duplication = nullptr;
+    }
+    if (context) {
+        context->Release();
+        context = nullptr;
+    }
+    if (device) {
+        device->Release();
+        device = nullptr;
+    }
+#endif
+    initialized = false;
 }
