@@ -1,6 +1,7 @@
 #ifndef GUI_H
 #define GUI_H
 
+#include <windows.h>
 #include <string>
 #include <vector>
 #include <memory>
@@ -76,11 +77,11 @@ private:
     // Thumbnails cache (lazy loaded)
     std::vector<std::unique_ptr<ThumbnailEntry>> thumbnails;
 
-    // DirectX 11 resources
-    ID3D11Device* d3d_device;
-    ID3D11DeviceContext* d3d_context;
-    IDXGISwapChain* swap_chain;
-    ID3D11RenderTargetView* render_target_view;
+    // DirectX 11 resources (using ComPtr for automatic reference counting)
+    Microsoft::WRL::ComPtr<ID3D11Device> d3d_device;
+    Microsoft::WRL::ComPtr<ID3D11DeviceContext> d3d_context;
+    Microsoft::WRL::ComPtr<IDXGISwapChain> swap_chain;
+    Microsoft::WRL::ComPtr<ID3D11RenderTargetView> render_target_view;
 
     // Window handles
     HWND hwnd;
