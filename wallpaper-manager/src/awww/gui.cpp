@@ -64,10 +64,6 @@ WallpaperGUI::WallpaperGUI()
     , hovered_id(-1)
     , show_context_menu(false)
     , context_menu_id(-1)
-    , d3d_device(nullptr)
-    , d3d_context(nullptr)
-    , swap_chain(nullptr)
-    , render_target_view(nullptr)
     , hwnd(nullptr)
 {
     search_buffer[0] = '\0';
@@ -113,7 +109,7 @@ bool WallpaperGUI::initialize(const std::string& path) {
 
     // Setup Platform/Renderer backends
     ImGui_ImplWin32_Init(hwnd);
-    ImGui_ImplDX11_Init(d3d_device, d3d_context);
+    ImGui_ImplDX11_Init(d3d_device.Get(), d3d_context.Get());
 
     // Setup style
     ImGui::StyleColorsDark();
@@ -155,7 +151,7 @@ int WallpaperGUI::run() {
 
         // Render
         ImGui::Render();
-        d3d_context->OMSetRenderTargets(1, &render_target_view, nullptr);
+        d3d_context->OMSetRenderTargets(1, render_target_view.GetAddressOf(), nullptr);
         ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
 
         // Present
@@ -200,21 +196,21 @@ bool WallpaperGUI::init_d3d(HWND hwnd) {
 
     // Get DXGI device
     ComPtr<IDXGIDevice> dxgi_device;
-    hr = d3d_device->QueryInterface(__uuidof(IDXGIDevice), reinterpret_cast<void**>(&dxgi_device));
+    hr = d3d_device->QueryInterface(__uuidof(IDXGIDevice), reinterpret_cast<void**>(dxgi_device.GetAddressOf()));
     if (FAILED(hr)) {
         return false;
     }
 
     // Get adapter
     ComPtr<IDXGIAdapter> dxgi_adapter;
-    hr = dxgi_device->GetAdapter(&dxgi_adapter);
+    hr = dxgi_device->GetAdapter(dxgi_adapter.GetAddressOf());
     if (FAILED(hr)) {
         return false;
     }
 
     // Get output (monitor)
     ComPtr<IDXGIOutput> dxgi_output;
-    hr = dxgi_adapter->EnumOutputs(0, &dxgi_output);
+    hr = dxgi_adapter->EnumOutputs(0, dxgi_output.GetAddressOf());
     if (FAILED(hr)) {
         return false;
     }
@@ -238,24 +234,24 @@ bool WallpaperGUI::init_d3d(HWND hwnd) {
     sd.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
 
     ComPtr<IDXGIFactory> dxgi_factory;
-    hr = dxgi_adapter->GetParent(__uuidof(IDXGIFactory), reinterpret_cast<void**>(&dxgi_factory));
+    hr = dxgi_adapter->GetParent(__uuidof(IDXGIFactory), reinterpret_cast<void**>(dxgi_factory.GetAddressOf()));
     if (FAILED(hr)) {
         return false;
     }
 
-    hr = dxgi_factory->CreateSwapChain(d3d_device, &sd, &swap_chain);
+    hr = dxgi_factory->CreateSwapChain(d3d_device, &sd, swap_chain.GetAddressOf());
     if (FAILED(hr)) {
         return false;
     }
 
     // Create render target view
     ComPtr<ID3D11Texture2D> back_buffer;
-    hr = swap_chain->GetBuffer(0, __uuidof(ID3D11Texture2D), reinterpret_cast<void**>(&back_buffer));
+    hr = swap_chain->GetBuffer(0, __uuidof(ID3D11Texture2D), reinterpret_cast<void**>(back_buffer.GetAddressOf()));
     if (FAILED(hr)) {
         return false;
     }
 
-    hr = d3d_device->CreateRenderTargetView(back_buffer.Get(), nullptr, &render_target_view);
+    hr = d3d_device->CreateRenderTargetView(back_buffer.Get(), nullptr, render_target_view.GetAddressOf());
     if (FAILED(hr)) {
         return false;
     }
@@ -264,22 +260,10 @@ bool WallpaperGUI::init_d3d(HWND hwnd) {
 }
 
 void WallpaperGUI::cleanup_d3d() {
-    if (render_target_view) {
-        render_target_view->Release();
-        render_target_view = nullptr;
-    }
-    if (swap_chain) {
-        swap_chain->Release();
-        swap_chain = nullptr;
-    }
-    if (d3d_context) {
-        d3d_context->Release();
-        d3d_context = nullptr;
-    }
-    if (d3d_device) {
-        d3d_device->Release();
-        d3d_device = nullptr;
-    }
+    render_target_view.Reset();
+    swap_chain.Reset();
+    d3d_context.Reset();
+    d3d_device.Reset();
 }
 
 std::vector<Wallpaper> WallpaperGUI::get_filtered_wallpapers() {
@@ -701,7 +685,7 @@ ID3D11ShaderResourceView* WallpaperGUI::create_texture_from_file(const std::stri
     subresource.SysMemPitch = width * 4;
 
     ComPtr<ID3D11Texture2D> texture;
-    HRESULT hr = d3d_device->CreateTexture2D(&desc, &subresource, &texture);
+    HRESULT hr = d3d_device->CreateTexture2D(&desc, &subresource, texture.GetAddressOf());
     
     stbi_image_free(data);
 
