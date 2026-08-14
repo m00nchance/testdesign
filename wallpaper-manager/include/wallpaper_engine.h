@@ -3,6 +3,8 @@
 
 #include <string>
 
+#ifdef _WIN32
+// Windows-specific implementation
 class WallpaperEngine {
 public:
     WallpaperEngine();
@@ -31,5 +33,35 @@ private:
     // Notify system of change
     void notify_change();
 };
+#else
+// Stub implementation for non-Windows platforms
+class WallpaperEngine {
+public:
+    WallpaperEngine() {}
+    ~WallpaperEngine() {}
+    
+    bool set_wallpaper(const std::string& image_path) { 
+        (void)image_path;
+        return false; 
+    }
+    
+    bool set_wallpaper_for_monitor(const std::string& image_path, int monitor_index) {
+        (void)image_path;
+        (void)monitor_index;
+        return false;
+    }
+    
+    bool set_wallpaper_style(int style) {
+        (void)style;
+        return false;
+    }
+    
+    std::string get_current_wallpaper() {
+        return "";
+    }
+    
+    void refresh_desktop() {}
+};
+#endif
 
 #endif // WALLPAPER_ENGINE_H

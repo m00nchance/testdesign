@@ -1,5 +1,6 @@
 // gui.cpp - Wallpaper GUI Selector using Dear ImGui + Win32/DX11
 #include "gui.h"
+#ifdef _WIN32
 #include "wallpaper_engine.h"
 #include "utils.h"
 #include <windows.h>
@@ -24,6 +25,7 @@
 #pragma comment(lib, "user32.lib")
 
 using Microsoft::WRL::ComPtr;
+#endif
 
 namespace gui {
 
@@ -105,7 +107,7 @@ bool WallpaperGUI::initialize(const std::string& path) {
     ImGui::CreateContext();
     ImGuiIO& io = ImGui::GetIO();
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
-    io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+    // Note: DockingEnable requires the docking branch of ImGui
 
     // Setup Platform/Renderer backends
     ImGui_ImplWin32_Init(hwnd);
@@ -755,3 +757,5 @@ void WallpaperGUI::unload_all_thumbnails() {
 }
 
 } // namespace gui
+
+#endif // _WIN32

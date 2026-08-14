@@ -1,4 +1,5 @@
 #include "wallpaper_engine.h"
+#ifdef _WIN32
 #include <windows.h>
 #include <sstream>
 
@@ -177,3 +178,5 @@ void WallpaperEngine::notify_change() {
     SystemParametersInfoA(SPI_SETDESKWALLPAPER, 0, nullptr, 
                          SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE);
 }
+
+#endif // _WIN32

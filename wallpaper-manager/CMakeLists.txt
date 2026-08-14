@@ -68,7 +68,11 @@ add_executable(awww-win
     src/core/utils.cpp
     src/core/database.cpp
 )
-target_link_libraries(awww-win PRIVATE sqlite3 ole32 shell32 user32 gdi32)
+if(WIN32)
+    target_link_libraries(awww-win PRIVATE sqlite3 ole32 shell32 user32 gdi32)
+else()
+    target_link_libraries(awww-win PRIVATE sqlite3)
+endif()
 
 # awww-win-gui executable (GUI version with wallpaper picker)
 add_executable(awww-win-gui
@@ -78,7 +82,12 @@ add_executable(awww-win-gui
     src/core/utils.cpp
     src/core/database.cpp
 )
-target_link_libraries(awww-win-gui PRIVATE imgui sqlite3 ole32 shell32 user32 gdi32 d3d11 dxgi)
+if(WIN32)
+    target_link_libraries(awww-win-gui PRIVATE imgui sqlite3 ole32 shell32 user32 gdi32 d3d11 dxgi)
+else()
+    # GUI not supported on non-Windows platforms without additional work
+    message(WARNING "awww-win-gui requires Windows. Skipping build.")
+endif()
 target_compile_definitions(awww-win-gui PRIVATE _CRT_SECURE_NO_WARNINGS)
 
 # Install targets

@@ -1,7 +1,10 @@
 #ifndef GUI_H
 #define GUI_H
 
+#ifdef _WIN32
 #include <windows.h>
+#include <wrl/client.h>
+#endif
 #include <string>
 #include <vector>
 #include <memory>
@@ -77,17 +80,21 @@ private:
     // Thumbnails cache (lazy loaded)
     std::vector<std::unique_ptr<ThumbnailEntry>> thumbnails;
 
+#ifdef _WIN32
     // DirectX 11 resources (using ComPtr for automatic reference counting)
     Microsoft::WRL::ComPtr<ID3D11Device> d3d_device;
     Microsoft::WRL::ComPtr<ID3D11DeviceContext> d3d_context;
     Microsoft::WRL::ComPtr<IDXGISwapChain> swap_chain;
     Microsoft::WRL::ComPtr<ID3D11RenderTargetView> render_target_view;
 
-    // Window handles
-    HWND hwnd;
+    // Window handle
+    HWND hwnd = nullptr;
+#endif
 
     // Methods
+#ifdef _WIN32
     bool init_d3d(HWND hwnd);
+#endif
     void cleanup_d3d();
     void render_frame();
     void render_wallpaper_grid();

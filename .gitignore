@@ -1,20 +1,52 @@
 ```
 # Build artifacts
-wallpaper-manager/build/
-# Dependencies
-*.a
-*.so
-*.dylib
-*.dll
-*.exe
-*.o
-*.obj
-# CMake
+build/
 CMakeFiles/
 CMakeCache.txt
 cmake_install.cmake
 Makefile
-# Temporary files
-*.tmp
+
+# Compiled files
+*.o
+*.obj
+*.a
+*.lib
+*.dll
+*.so
+*.dylib
+*.exe
+
+# Dependencies
+.externalNativeBuild/
+
+# Logs and temp files
 *.log
+*.tmp
+
+# Environment
+.env
+.env.local
+*.env.*
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Coverage reports
+coverage/
+htmlcov/
+.coverage
+
+# Python artifacts (if any Python files exist in project)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
 ```
