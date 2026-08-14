@@ -5,19 +5,20 @@ CMakeFiles/
 CMakeCache.txt
 cmake_install.cmake
 Makefile
-
-# Compiled files
+*.cmake
+*.dir/
+*.make
+*.marks
 *.o
 *.obj
 *.a
 *.lib
-*.dll
 *.so
-*.dylib
+*.dll
 *.exe
 
 # Dependencies
-.externalNativeBuild/
+vendor/
 
 # Logs and temp files
 *.log
@@ -34,19 +35,23 @@ Makefile
 *.swp
 *.swo
 
-# OS specific
+# OS
 .DS_Store
 Thumbs.db
 
-# Coverage reports
+# Coverage
 coverage/
 htmlcov/
 .coverage
 
-# Python artifacts (if any Python files exist in project)
+# Python (if applicable)
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 .Python
+*.so
+.Python
+*.egg-info/
+.eggs/
 ```

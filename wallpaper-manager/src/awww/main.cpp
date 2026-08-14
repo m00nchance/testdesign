@@ -13,12 +13,13 @@
 
 #include "awww.h"
 #include "utils.h"
-#ifdef _WIN32
-#include "gui.h"
-#endif
 #include <iostream>
 #include <random>
 #include <cstring>
+
+#ifdef _WIN32
+#include "gui.h"
+#endif
 
 void print_help() {
     std::cout << "awww-win - Wallpaper Manager for Windows\n\n";

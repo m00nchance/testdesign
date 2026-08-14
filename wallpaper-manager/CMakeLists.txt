@@ -75,20 +75,23 @@ else()
 endif()
 
 # awww-win-gui executable (GUI version with wallpaper picker)
-add_executable(awww-win-gui
-    src/awww/awww.cpp
-    src/awww/wallpaper_engine.cpp
-    src/awww/gui.cpp
-    src/core/utils.cpp
-    src/core/database.cpp
-)
+# Only build on Windows
 if(WIN32)
+    add_executable(awww-win-gui
+        src/awww/awww.cpp
+        src/awww/wallpaper_engine.cpp
+        src/awww/gui.cpp
+        src/core/utils.cpp
+        src/core/database.cpp
+    )
     target_link_libraries(awww-win-gui PRIVATE imgui sqlite3 ole32 shell32 user32 gdi32 d3d11 dxgi)
+    target_compile_definitions(awww-win-gui PRIVATE _CRT_SECURE_NO_WARNINGS)
 else()
-    # GUI not supported on non-Windows platforms without additional work
-    message(WARNING "awww-win-gui requires Windows. Skipping build.")
+    # GUI not supported on non-Windows platforms - skip building
 endif()
-target_compile_definitions(awww-win-gui PRIVATE _CRT_SECURE_NO_WARNINGS)
 
 # Install targets
-install(TARGETS awww-win awww-win-gui DESTINATION bin)
+install(TARGETS awww-win DESTINATION bin)
+if(WIN32)
+    install(TARGETS awww-win-gui DESTINATION bin)
+endif()
