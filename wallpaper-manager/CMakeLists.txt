@@ -10,8 +10,10 @@ set(SQLite3_FOUND TRUE)
 set(SQLite3_INCLUDE_DIRS ${CMAKE_SOURCE_DIR}/vendor/sqlite)
 set(SQLite3_LIBRARIES sqlite3)
 
-# Include vendor directory for SQLite3
+# Include vendor directory for SQLite3 and other libs
 include_directories(${CMAKE_SOURCE_DIR}/vendor/sqlite)
+include_directories(${CMAKE_SOURCE_DIR}/vendor/imgui)
+include_directories(${CMAKE_SOURCE_DIR}/vendor/stb)
 
 # SQLite3 amalgamation (vendored) - compile directly
 add_library(sqlite3 STATIC 
@@ -24,6 +26,30 @@ target_compile_definitions(sqlite3 PUBLIC
     SQLITE_ENABLE_JSON1
 )
 
+# Dear ImGui library (vendored)
+set(IMGUI_SOURCES
+    ${CMAKE_SOURCE_DIR}/vendor/imgui/imgui.cpp
+    ${CMAKE_SOURCE_DIR}/vendor/imgui/imgui_demo.cpp
+    ${CMAKE_SOURCE_DIR}/vendor/imgui/imgui_draw.cpp
+    ${CMAKE_SOURCE_DIR}/vendor/imgui/imgui_tables.cpp
+    ${CMAKE_SOURCE_DIR}/vendor/imgui/imgui_widgets.cpp
+)
+
+# Only build platform-specific backends on Windows
+if(WIN32)
+    list(APPEND IMGUI_SOURCES
+        ${CMAKE_SOURCE_DIR}/vendor/imgui/imgui_impl_win32.cpp
+        ${CMAKE_SOURCE_DIR}/vendor/imgui/imgui_impl_dx11.cpp
+    )
+endif()
+
+add_library(imgui STATIC ${IMGUI_SOURCES})
+target_include_directories(imgui PUBLIC ${CMAKE_SOURCE_DIR}/vendor/imgui)
+target_compile_definitions(imgui PUBLIC _CRT_SECURE_NO_WARNINGS)
+if(WIN32)
+    target_link_libraries(imgui PRIVATE d3d11 dxgi user32)
+endif()
+
 # Include directories
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
@@ -34,22 +60,7 @@ add_library(core_utils STATIC
 )
 target_link_libraries(core_utils PRIVATE sqlite3)
 
-# grim-win executable
-add_executable(grim-win
-    src/grim/grim.cpp
-    src/grim/main.cpp
-    src/core/utils.cpp
-)
-target_link_libraries(grim-win PRIVATE d3d11 dxgi)
-
-# slurp-win executable
-add_executable(slurp-win
-    src/slurp/slurp.cpp
-    src/slurp/main.cpp
-)
-target_link_libraries(slurp-win PRIVATE user32 gdi32)
-
-# awww-win executable
+# awww-win executable (CLI only)
 add_executable(awww-win
     src/awww/awww.cpp
     src/awww/wallpaper_engine.cpp
@@ -59,5 +70,16 @@ add_executable(awww-win
 )
 target_link_libraries(awww-win PRIVATE sqlite3 ole32 shell32 user32 gdi32)
 
+# awww-win-gui executable (GUI version with wallpaper picker)
+add_executable(awww-win-gui
+    src/awww/awww.cpp
+    src/awww/wallpaper_engine.cpp
+    src/awww/gui.cpp
+    src/core/utils.cpp
+    src/core/database.cpp
+)
+target_link_libraries(awww-win-gui PRIVATE imgui sqlite3 ole32 shell32 user32 gdi32 d3d11 dxgi)
+target_compile_definitions(awww-win-gui PRIVATE _CRT_SECURE_NO_WARNINGS)
+
 # Install targets
-install(TARGETS grim-win slurp-win awww-win DESTINATION bin)
+install(TARGETS awww-win awww-win-gui DESTINATION bin)

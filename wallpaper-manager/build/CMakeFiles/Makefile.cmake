@@ -124,8 +124,8 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/sqlite3.dir/DependInfo.cmake"
+  "CMakeFiles/imgui.dir/DependInfo.cmake"
   "CMakeFiles/core_utils.dir/DependInfo.cmake"
-  "CMakeFiles/grim-win.dir/DependInfo.cmake"
-  "CMakeFiles/slurp-win.dir/DependInfo.cmake"
   "CMakeFiles/awww-win.dir/DependInfo.cmake"
+  "CMakeFiles/awww-win-gui.dir/DependInfo.cmake"
   )

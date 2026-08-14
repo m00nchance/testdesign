@@ -175,6 +175,19 @@ sqlite3/fast:
 .PHONY : sqlite3/fast
 
 #=============================================================================
+# Target rules for targets named imgui
+
+# Build rule for target.
+imgui: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 imgui
+.PHONY : imgui
+
+# fast build rule for target.
+imgui/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/imgui.dir/build.make CMakeFiles/imgui.dir/build
+.PHONY : imgui/fast
+
+#=============================================================================
 # Target rules for targets named core_utils
 
 # Build rule for target.
@@ -186,32 +199,6 @@ core_utils: cmake_check_build_system
 core_utils/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_utils.dir/build.make CMakeFiles/core_utils.dir/build
 .PHONY : core_utils/fast
-
-#=============================================================================
-# Target rules for targets named grim-win
-
-# Build rule for target.
-grim-win: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 grim-win
-.PHONY : grim-win
-
-# fast build rule for target.
-grim-win/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/grim-win.dir/build.make CMakeFiles/grim-win.dir/build
-.PHONY : grim-win/fast
-
-#=============================================================================
-# Target rules for targets named slurp-win
-
-# Build rule for target.
-slurp-win: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 slurp-win
-.PHONY : slurp-win
-
-# fast build rule for target.
-slurp-win/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/slurp-win.dir/build.make CMakeFiles/slurp-win.dir/build
-.PHONY : slurp-win/fast
 
 #=============================================================================
 # Target rules for targets named awww-win
@@ -226,12 +213,26 @@ awww-win/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win.dir/build.make CMakeFiles/awww-win.dir/build
 .PHONY : awww-win/fast
 
+#=============================================================================
+# Target rules for targets named awww-win-gui
+
+# Build rule for target.
+awww-win-gui: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 awww-win-gui
+.PHONY : awww-win-gui
+
+# fast build rule for target.
+awww-win-gui/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/build
+.PHONY : awww-win-gui/fast
+
 src/awww/awww.o: src/awww/awww.cpp.o
 .PHONY : src/awww/awww.o
 
 # target to build an object file
 src/awww/awww.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win.dir/build.make CMakeFiles/awww-win.dir/src/awww/awww.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/src/awww/awww.cpp.o
 .PHONY : src/awww/awww.cpp.o
 
 src/awww/awww.i: src/awww/awww.cpp.i
@@ -240,6 +241,7 @@ src/awww/awww.i: src/awww/awww.cpp.i
 # target to preprocess a source file
 src/awww/awww.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win.dir/build.make CMakeFiles/awww-win.dir/src/awww/awww.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/src/awww/awww.cpp.i
 .PHONY : src/awww/awww.cpp.i
 
 src/awww/awww.s: src/awww/awww.cpp.s
@@ -248,7 +250,32 @@ src/awww/awww.s: src/awww/awww.cpp.s
 # target to generate assembly for a file
 src/awww/awww.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win.dir/build.make CMakeFiles/awww-win.dir/src/awww/awww.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/src/awww/awww.cpp.s
 .PHONY : src/awww/awww.cpp.s
+
+src/awww/gui.o: src/awww/gui.cpp.o
+.PHONY : src/awww/gui.o
+
+# target to build an object file
+src/awww/gui.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/src/awww/gui.cpp.o
+.PHONY : src/awww/gui.cpp.o
+
+src/awww/gui.i: src/awww/gui.cpp.i
+.PHONY : src/awww/gui.i
+
+# target to preprocess a source file
+src/awww/gui.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/src/awww/gui.cpp.i
+.PHONY : src/awww/gui.cpp.i
+
+src/awww/gui.s: src/awww/gui.cpp.s
+.PHONY : src/awww/gui.s
+
+# target to generate assembly for a file
+src/awww/gui.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/src/awww/gui.cpp.s
+.PHONY : src/awww/gui.cpp.s
 
 src/awww/main.o: src/awww/main.cpp.o
 .PHONY : src/awww/main.o
@@ -280,6 +307,7 @@ src/awww/wallpaper_engine.o: src/awww/wallpaper_engine.cpp.o
 # target to build an object file
 src/awww/wallpaper_engine.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win.dir/build.make CMakeFiles/awww-win.dir/src/awww/wallpaper_engine.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/src/awww/wallpaper_engine.cpp.o
 .PHONY : src/awww/wallpaper_engine.cpp.o
 
 src/awww/wallpaper_engine.i: src/awww/wallpaper_engine.cpp.i
@@ -288,6 +316,7 @@ src/awww/wallpaper_engine.i: src/awww/wallpaper_engine.cpp.i
 # target to preprocess a source file
 src/awww/wallpaper_engine.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win.dir/build.make CMakeFiles/awww-win.dir/src/awww/wallpaper_engine.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/src/awww/wallpaper_engine.cpp.i
 .PHONY : src/awww/wallpaper_engine.cpp.i
 
 src/awww/wallpaper_engine.s: src/awww/wallpaper_engine.cpp.s
@@ -296,6 +325,7 @@ src/awww/wallpaper_engine.s: src/awww/wallpaper_engine.cpp.s
 # target to generate assembly for a file
 src/awww/wallpaper_engine.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win.dir/build.make CMakeFiles/awww-win.dir/src/awww/wallpaper_engine.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/src/awww/wallpaper_engine.cpp.s
 .PHONY : src/awww/wallpaper_engine.cpp.s
 
 src/core/database.o: src/core/database.cpp.o
@@ -305,6 +335,7 @@ src/core/database.o: src/core/database.cpp.o
 src/core/database.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_utils.dir/build.make CMakeFiles/core_utils.dir/src/core/database.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win.dir/build.make CMakeFiles/awww-win.dir/src/core/database.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/src/core/database.cpp.o
 .PHONY : src/core/database.cpp.o
 
 src/core/database.i: src/core/database.cpp.i
@@ -314,6 +345,7 @@ src/core/database.i: src/core/database.cpp.i
 src/core/database.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_utils.dir/build.make CMakeFiles/core_utils.dir/src/core/database.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win.dir/build.make CMakeFiles/awww-win.dir/src/core/database.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/src/core/database.cpp.i
 .PHONY : src/core/database.cpp.i
 
 src/core/database.s: src/core/database.cpp.s
@@ -323,6 +355,7 @@ src/core/database.s: src/core/database.cpp.s
 src/core/database.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_utils.dir/build.make CMakeFiles/core_utils.dir/src/core/database.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win.dir/build.make CMakeFiles/awww-win.dir/src/core/database.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/src/core/database.cpp.s
 .PHONY : src/core/database.cpp.s
 
 src/core/utils.o: src/core/utils.cpp.o
@@ -331,8 +364,8 @@ src/core/utils.o: src/core/utils.cpp.o
 # target to build an object file
 src/core/utils.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_utils.dir/build.make CMakeFiles/core_utils.dir/src/core/utils.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/grim-win.dir/build.make CMakeFiles/grim-win.dir/src/core/utils.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win.dir/build.make CMakeFiles/awww-win.dir/src/core/utils.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/src/core/utils.cpp.o
 .PHONY : src/core/utils.cpp.o
 
 src/core/utils.i: src/core/utils.cpp.i
@@ -341,8 +374,8 @@ src/core/utils.i: src/core/utils.cpp.i
 # target to preprocess a source file
 src/core/utils.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_utils.dir/build.make CMakeFiles/core_utils.dir/src/core/utils.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/grim-win.dir/build.make CMakeFiles/grim-win.dir/src/core/utils.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win.dir/build.make CMakeFiles/awww-win.dir/src/core/utils.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/src/core/utils.cpp.i
 .PHONY : src/core/utils.cpp.i
 
 src/core/utils.s: src/core/utils.cpp.s
@@ -351,105 +384,129 @@ src/core/utils.s: src/core/utils.cpp.s
 # target to generate assembly for a file
 src/core/utils.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_utils.dir/build.make CMakeFiles/core_utils.dir/src/core/utils.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/grim-win.dir/build.make CMakeFiles/grim-win.dir/src/core/utils.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win.dir/build.make CMakeFiles/awww-win.dir/src/core/utils.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/src/core/utils.cpp.s
 .PHONY : src/core/utils.cpp.s
 
-src/grim/grim.o: src/grim/grim.cpp.o
-.PHONY : src/grim/grim.o
+vendor/imgui/imgui.o: vendor/imgui/imgui.cpp.o
+.PHONY : vendor/imgui/imgui.o
 
 # target to build an object file
-src/grim/grim.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/grim-win.dir/build.make CMakeFiles/grim-win.dir/src/grim/grim.cpp.o
-.PHONY : src/grim/grim.cpp.o
+vendor/imgui/imgui.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/imgui.dir/build.make CMakeFiles/imgui.dir/vendor/imgui/imgui.cpp.o
+.PHONY : vendor/imgui/imgui.cpp.o
 
-src/grim/grim.i: src/grim/grim.cpp.i
-.PHONY : src/grim/grim.i
+vendor/imgui/imgui.i: vendor/imgui/imgui.cpp.i
+.PHONY : vendor/imgui/imgui.i
 
 # target to preprocess a source file
-src/grim/grim.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/grim-win.dir/build.make CMakeFiles/grim-win.dir/src/grim/grim.cpp.i
-.PHONY : src/grim/grim.cpp.i
+vendor/imgui/imgui.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/imgui.dir/build.make CMakeFiles/imgui.dir/vendor/imgui/imgui.cpp.i
+.PHONY : vendor/imgui/imgui.cpp.i
 
-src/grim/grim.s: src/grim/grim.cpp.s
-.PHONY : src/grim/grim.s
+vendor/imgui/imgui.s: vendor/imgui/imgui.cpp.s
+.PHONY : vendor/imgui/imgui.s
 
 # target to generate assembly for a file
-src/grim/grim.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/grim-win.dir/build.make CMakeFiles/grim-win.dir/src/grim/grim.cpp.s
-.PHONY : src/grim/grim.cpp.s
+vendor/imgui/imgui.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/imgui.dir/build.make CMakeFiles/imgui.dir/vendor/imgui/imgui.cpp.s
+.PHONY : vendor/imgui/imgui.cpp.s
 
-src/grim/main.o: src/grim/main.cpp.o
-.PHONY : src/grim/main.o
+vendor/imgui/imgui_demo.o: vendor/imgui/imgui_demo.cpp.o
+.PHONY : vendor/imgui/imgui_demo.o
 
 # target to build an object file
-src/grim/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/grim-win.dir/build.make CMakeFiles/grim-win.dir/src/grim/main.cpp.o
-.PHONY : src/grim/main.cpp.o
+vendor/imgui/imgui_demo.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/imgui.dir/build.make CMakeFiles/imgui.dir/vendor/imgui/imgui_demo.cpp.o
+.PHONY : vendor/imgui/imgui_demo.cpp.o
 
-src/grim/main.i: src/grim/main.cpp.i
-.PHONY : src/grim/main.i
+vendor/imgui/imgui_demo.i: vendor/imgui/imgui_demo.cpp.i
+.PHONY : vendor/imgui/imgui_demo.i
 
 # target to preprocess a source file
-src/grim/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/grim-win.dir/build.make CMakeFiles/grim-win.dir/src/grim/main.cpp.i
-.PHONY : src/grim/main.cpp.i
+vendor/imgui/imgui_demo.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/imgui.dir/build.make CMakeFiles/imgui.dir/vendor/imgui/imgui_demo.cpp.i
+.PHONY : vendor/imgui/imgui_demo.cpp.i
 
-src/grim/main.s: src/grim/main.cpp.s
-.PHONY : src/grim/main.s
+vendor/imgui/imgui_demo.s: vendor/imgui/imgui_demo.cpp.s
+.PHONY : vendor/imgui/imgui_demo.s
 
 # target to generate assembly for a file
-src/grim/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/grim-win.dir/build.make CMakeFiles/grim-win.dir/src/grim/main.cpp.s
-.PHONY : src/grim/main.cpp.s
+vendor/imgui/imgui_demo.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/imgui.dir/build.make CMakeFiles/imgui.dir/vendor/imgui/imgui_demo.cpp.s
+.PHONY : vendor/imgui/imgui_demo.cpp.s
 
-src/slurp/main.o: src/slurp/main.cpp.o
-.PHONY : src/slurp/main.o
+vendor/imgui/imgui_draw.o: vendor/imgui/imgui_draw.cpp.o
+.PHONY : vendor/imgui/imgui_draw.o
 
 # target to build an object file
-src/slurp/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/slurp-win.dir/build.make CMakeFiles/slurp-win.dir/src/slurp/main.cpp.o
-.PHONY : src/slurp/main.cpp.o
+vendor/imgui/imgui_draw.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/imgui.dir/build.make CMakeFiles/imgui.dir/vendor/imgui/imgui_draw.cpp.o
+.PHONY : vendor/imgui/imgui_draw.cpp.o
 
-src/slurp/main.i: src/slurp/main.cpp.i
-.PHONY : src/slurp/main.i
+vendor/imgui/imgui_draw.i: vendor/imgui/imgui_draw.cpp.i
+.PHONY : vendor/imgui/imgui_draw.i
 
 # target to preprocess a source file
-src/slurp/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/slurp-win.dir/build.make CMakeFiles/slurp-win.dir/src/slurp/main.cpp.i
-.PHONY : src/slurp/main.cpp.i
+vendor/imgui/imgui_draw.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/imgui.dir/build.make CMakeFiles/imgui.dir/vendor/imgui/imgui_draw.cpp.i
+.PHONY : vendor/imgui/imgui_draw.cpp.i
 
-src/slurp/main.s: src/slurp/main.cpp.s
-.PHONY : src/slurp/main.s
+vendor/imgui/imgui_draw.s: vendor/imgui/imgui_draw.cpp.s
+.PHONY : vendor/imgui/imgui_draw.s
 
 # target to generate assembly for a file
-src/slurp/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/slurp-win.dir/build.make CMakeFiles/slurp-win.dir/src/slurp/main.cpp.s
-.PHONY : src/slurp/main.cpp.s
+vendor/imgui/imgui_draw.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/imgui.dir/build.make CMakeFiles/imgui.dir/vendor/imgui/imgui_draw.cpp.s
+.PHONY : vendor/imgui/imgui_draw.cpp.s
 
-src/slurp/slurp.o: src/slurp/slurp.cpp.o
-.PHONY : src/slurp/slurp.o
+vendor/imgui/imgui_tables.o: vendor/imgui/imgui_tables.cpp.o
+.PHONY : vendor/imgui/imgui_tables.o
 
 # target to build an object file
-src/slurp/slurp.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/slurp-win.dir/build.make CMakeFiles/slurp-win.dir/src/slurp/slurp.cpp.o
-.PHONY : src/slurp/slurp.cpp.o
+vendor/imgui/imgui_tables.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/imgui.dir/build.make CMakeFiles/imgui.dir/vendor/imgui/imgui_tables.cpp.o
+.PHONY : vendor/imgui/imgui_tables.cpp.o
 
-src/slurp/slurp.i: src/slurp/slurp.cpp.i
-.PHONY : src/slurp/slurp.i
+vendor/imgui/imgui_tables.i: vendor/imgui/imgui_tables.cpp.i
+.PHONY : vendor/imgui/imgui_tables.i
 
 # target to preprocess a source file
-src/slurp/slurp.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/slurp-win.dir/build.make CMakeFiles/slurp-win.dir/src/slurp/slurp.cpp.i
-.PHONY : src/slurp/slurp.cpp.i
+vendor/imgui/imgui_tables.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/imgui.dir/build.make CMakeFiles/imgui.dir/vendor/imgui/imgui_tables.cpp.i
+.PHONY : vendor/imgui/imgui_tables.cpp.i
 
-src/slurp/slurp.s: src/slurp/slurp.cpp.s
-.PHONY : src/slurp/slurp.s
+vendor/imgui/imgui_tables.s: vendor/imgui/imgui_tables.cpp.s
+.PHONY : vendor/imgui/imgui_tables.s
 
 # target to generate assembly for a file
-src/slurp/slurp.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/slurp-win.dir/build.make CMakeFiles/slurp-win.dir/src/slurp/slurp.cpp.s
-.PHONY : src/slurp/slurp.cpp.s
+vendor/imgui/imgui_tables.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/imgui.dir/build.make CMakeFiles/imgui.dir/vendor/imgui/imgui_tables.cpp.s
+.PHONY : vendor/imgui/imgui_tables.cpp.s
+
+vendor/imgui/imgui_widgets.o: vendor/imgui/imgui_widgets.cpp.o
+.PHONY : vendor/imgui/imgui_widgets.o
+
+# target to build an object file
+vendor/imgui/imgui_widgets.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/imgui.dir/build.make CMakeFiles/imgui.dir/vendor/imgui/imgui_widgets.cpp.o
+.PHONY : vendor/imgui/imgui_widgets.cpp.o
+
+vendor/imgui/imgui_widgets.i: vendor/imgui/imgui_widgets.cpp.i
+.PHONY : vendor/imgui/imgui_widgets.i
+
+# target to preprocess a source file
+vendor/imgui/imgui_widgets.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/imgui.dir/build.make CMakeFiles/imgui.dir/vendor/imgui/imgui_widgets.cpp.i
+.PHONY : vendor/imgui/imgui_widgets.cpp.i
+
+vendor/imgui/imgui_widgets.s: vendor/imgui/imgui_widgets.cpp.s
+.PHONY : vendor/imgui/imgui_widgets.s
+
+# target to generate assembly for a file
+vendor/imgui/imgui_widgets.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/imgui.dir/build.make CMakeFiles/imgui.dir/vendor/imgui/imgui_widgets.cpp.s
+.PHONY : vendor/imgui/imgui_widgets.cpp.s
 
 vendor/sqlite/sqlite3.o: vendor/sqlite/sqlite3.c.o
 .PHONY : vendor/sqlite/sqlite3.o
@@ -488,13 +545,16 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... awww-win"
+	@echo "... awww-win-gui"
 	@echo "... core_utils"
-	@echo "... grim-win"
-	@echo "... slurp-win"
+	@echo "... imgui"
 	@echo "... sqlite3"
 	@echo "... src/awww/awww.o"
 	@echo "... src/awww/awww.i"
 	@echo "... src/awww/awww.s"
+	@echo "... src/awww/gui.o"
+	@echo "... src/awww/gui.i"
+	@echo "... src/awww/gui.s"
 	@echo "... src/awww/main.o"
 	@echo "... src/awww/main.i"
 	@echo "... src/awww/main.s"
@@ -507,18 +567,21 @@ help:
 	@echo "... src/core/utils.o"
 	@echo "... src/core/utils.i"
 	@echo "... src/core/utils.s"
-	@echo "... src/grim/grim.o"
-	@echo "... src/grim/grim.i"
-	@echo "... src/grim/grim.s"
-	@echo "... src/grim/main.o"
-	@echo "... src/grim/main.i"
-	@echo "... src/grim/main.s"
-	@echo "... src/slurp/main.o"
-	@echo "... src/slurp/main.i"
-	@echo "... src/slurp/main.s"
-	@echo "... src/slurp/slurp.o"
-	@echo "... src/slurp/slurp.i"
-	@echo "... src/slurp/slurp.s"
+	@echo "... vendor/imgui/imgui.o"
+	@echo "... vendor/imgui/imgui.i"
+	@echo "... vendor/imgui/imgui.s"
+	@echo "... vendor/imgui/imgui_demo.o"
+	@echo "... vendor/imgui/imgui_demo.i"
+	@echo "... vendor/imgui/imgui_demo.s"
+	@echo "... vendor/imgui/imgui_draw.o"
+	@echo "... vendor/imgui/imgui_draw.i"
+	@echo "... vendor/imgui/imgui_draw.s"
+	@echo "... vendor/imgui/imgui_tables.o"
+	@echo "... vendor/imgui/imgui_tables.i"
+	@echo "... vendor/imgui/imgui_tables.s"
+	@echo "... vendor/imgui/imgui_widgets.o"
+	@echo "... vendor/imgui/imgui_widgets.i"
+	@echo "... vendor/imgui/imgui_widgets.s"
 	@echo "... vendor/sqlite/sqlite3.o"
 	@echo "... vendor/sqlite/sqlite3.i"
 	@echo "... vendor/sqlite/sqlite3.s"
