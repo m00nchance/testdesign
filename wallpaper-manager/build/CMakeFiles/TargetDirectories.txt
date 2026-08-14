@@ -2,7 +2,6 @@
 /workspace/wallpaper-manager/build/CMakeFiles/imgui.dir
 /workspace/wallpaper-manager/build/CMakeFiles/core_utils.dir
 /workspace/wallpaper-manager/build/CMakeFiles/awww-win.dir
-/workspace/wallpaper-manager/build/CMakeFiles/awww-win-gui.dir
 /workspace/wallpaper-manager/build/CMakeFiles/edit_cache.dir
 /workspace/wallpaper-manager/build/CMakeFiles/rebuild_cache.dir
 /workspace/wallpaper-manager/build/CMakeFiles/list_install_components.dir

@@ -1,5 +1,6 @@
 // gui.cpp - Wallpaper GUI Selector using Dear ImGui + Win32/DX11
 #include "gui.h"
+
 #ifdef _WIN32
 #include "wallpaper_engine.h"
 #include "utils.h"
@@ -10,6 +11,7 @@
 #include <algorithm>
 #include <filesystem>
 #include <sstream>
+#include <cstring>
 
 // Dear ImGui headers (will be included from vendor)
 #include "imgui.h"
@@ -25,7 +27,6 @@
 #pragma comment(lib, "user32.lib")
 
 using Microsoft::WRL::ComPtr;
-#endif
 
 namespace gui {
 
@@ -54,6 +55,8 @@ static LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lPara
     return ::DefWindowProc(hWnd, msg, wParam, lParam);
 }
 
+namespace gui {
+
 WallpaperGUI::WallpaperGUI() 
     : initialized(false)
     , window_width(1280)
@@ -66,7 +69,9 @@ WallpaperGUI::WallpaperGUI()
     , hovered_id(-1)
     , show_context_menu(false)
     , context_menu_id(-1)
+#ifdef _WIN32
     , hwnd(nullptr)
+#endif
 {
     search_buffer[0] = '\0';
     show_favorites_only = false;
@@ -86,6 +91,7 @@ bool WallpaperGUI::initialize(const std::string& path) {
     // Initialize search buffer
     memset(search_buffer, 0, sizeof(search_buffer));
 
+#ifdef _WIN32
     // Register window class
     WNDCLASSEXW wc = { sizeof(wc), CS_CLASSDC, WndProc, 0L, 0L, GetModuleHandle(nullptr), nullptr, nullptr, nullptr, nullptr, L"awww-win GUI", nullptr };
     ::RegisterClassExW(&wc);
@@ -124,6 +130,7 @@ bool WallpaperGUI::initialize(const std::string& path) {
     // Show window
     ::ShowWindow(hwnd, SW_SHOWDEFAULT);
     ::UpdateWindow(hwnd);
+#endif
 
     return true;
 }
@@ -131,6 +138,7 @@ bool WallpaperGUI::initialize(const std::string& path) {
 int WallpaperGUI::run() {
     if (!initialized) return -1;
 
+#ifdef _WIN32
     MSG msg;
     ZeroMemory(&msg, sizeof(msg));
 
@@ -161,9 +169,13 @@ int WallpaperGUI::run() {
     }
 
     return 0;
+#else
+    return -1;
+#endif
 }
 
 void WallpaperGUI::shutdown() {
+#ifdef _WIN32
     // Cleanup ImGui
     ImGui_ImplDX11_Shutdown();
     ImGui_ImplWin32_Shutdown();
@@ -180,6 +192,7 @@ void WallpaperGUI::shutdown() {
         ::DestroyWindow(hwnd);
         hwnd = nullptr;
     }
+#endif
 
     // Close database
     db.close();
@@ -444,7 +457,8 @@ void WallpaperGUI::render_wallpaper_grid() {
     }
 
     float available_width = ImGui::GetContentRegionAvail().x;
-    int actual_columns = std::max(1, (int)((available_width + grid_spacing) / (thumbnail_size + grid_spacing)));
+    int cols_by_width = static_cast<int>((available_width + grid_spacing) / (thumbnail_size + grid_spacing));
+    int actual_columns = std::max(1, cols_by_width);
     
     float cell_width = (available_width - (actual_columns + 1) * grid_spacing) / actual_columns;
     float cell_height = cell_width * 0.75f + 40.0f; // 4:3 aspect ratio + space for info
@@ -759,3 +773,55 @@ void WallpaperGUI::unload_all_thumbnails() {
 } // namespace gui
 
 #endif // _WIN32
+
+// Stub implementations for non-Windows platforms
+#ifndef _WIN32
+namespace gui {
+
+WallpaperGUI::WallpaperGUI() 
+    : initialized(false)
+    , window_width(1280)
+    , window_height(720)
+    , thumbnail_size(200.0f)
+    , grid_spacing(15.0f)
+    , columns(4)
+    , scroll_y(0.0f)
+    , selected_id(-1)
+    , hovered_id(-1)
+    , show_context_menu(false)
+    , context_menu_id(-1)
+{
+    search_buffer[0] = '\0';
+    show_favorites_only = false;
+}
+
+WallpaperGUI::~WallpaperGUI() {}
+
+bool WallpaperGUI::initialize(const std::string& path) {
+    return false;
+}
+
+int WallpaperGUI::run() {
+    return -1;
+}
+
+void WallpaperGUI::shutdown() {}
+
+void WallpaperGUI::cleanup_d3d() {}
+void WallpaperGUI::render_frame() {}
+void WallpaperGUI::render_wallpaper_grid() {}
+void WallpaperGUI::render_thumbnail(const gui::ThumbnailEntry& thumb, int index) {}
+void WallpaperGUI::render_sidebar() {}
+void WallpaperGUI::render_context_menu() {}
+void WallpaperGUI::load_thumbnails() {}
+void WallpaperGUI::unload_all_thumbnails() {}
+gui::ThumbnailEntry* WallpaperGUI::get_or_load_thumbnail(int wallpaper_id) { return nullptr; }
+ID3D11ShaderResourceView* WallpaperGUI::create_texture_from_file(const std::string& path, int& out_width, int& out_height) { return nullptr; }
+void WallpaperGUI::set_wallpaper(const std::string& path) {}
+void WallpaperGUI::delete_wallpaper(int id) {}
+void WallpaperGUI::toggle_favorite(int id) {}
+void WallpaperGUI::add_tag_dialog(int id) {}
+std::vector<Wallpaper> WallpaperGUI::get_filtered_wallpapers() { return {}; }
+
+} // namespace gui
+#endif // !_WIN32

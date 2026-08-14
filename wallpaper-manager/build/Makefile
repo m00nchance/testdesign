@@ -213,26 +213,12 @@ awww-win/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win.dir/build.make CMakeFiles/awww-win.dir/build
 .PHONY : awww-win/fast
 
-#=============================================================================
-# Target rules for targets named awww-win-gui
-
-# Build rule for target.
-awww-win-gui: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 awww-win-gui
-.PHONY : awww-win-gui
-
-# fast build rule for target.
-awww-win-gui/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/build
-.PHONY : awww-win-gui/fast
-
 src/awww/awww.o: src/awww/awww.cpp.o
 .PHONY : src/awww/awww.o
 
 # target to build an object file
 src/awww/awww.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win.dir/build.make CMakeFiles/awww-win.dir/src/awww/awww.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/src/awww/awww.cpp.o
 .PHONY : src/awww/awww.cpp.o
 
 src/awww/awww.i: src/awww/awww.cpp.i
@@ -241,7 +227,6 @@ src/awww/awww.i: src/awww/awww.cpp.i
 # target to preprocess a source file
 src/awww/awww.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win.dir/build.make CMakeFiles/awww-win.dir/src/awww/awww.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/src/awww/awww.cpp.i
 .PHONY : src/awww/awww.cpp.i
 
 src/awww/awww.s: src/awww/awww.cpp.s
@@ -250,32 +235,7 @@ src/awww/awww.s: src/awww/awww.cpp.s
 # target to generate assembly for a file
 src/awww/awww.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win.dir/build.make CMakeFiles/awww-win.dir/src/awww/awww.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/src/awww/awww.cpp.s
 .PHONY : src/awww/awww.cpp.s
-
-src/awww/gui.o: src/awww/gui.cpp.o
-.PHONY : src/awww/gui.o
-
-# target to build an object file
-src/awww/gui.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/src/awww/gui.cpp.o
-.PHONY : src/awww/gui.cpp.o
-
-src/awww/gui.i: src/awww/gui.cpp.i
-.PHONY : src/awww/gui.i
-
-# target to preprocess a source file
-src/awww/gui.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/src/awww/gui.cpp.i
-.PHONY : src/awww/gui.cpp.i
-
-src/awww/gui.s: src/awww/gui.cpp.s
-.PHONY : src/awww/gui.s
-
-# target to generate assembly for a file
-src/awww/gui.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/src/awww/gui.cpp.s
-.PHONY : src/awww/gui.cpp.s
 
 src/awww/main.o: src/awww/main.cpp.o
 .PHONY : src/awww/main.o
@@ -307,7 +267,6 @@ src/awww/wallpaper_engine.o: src/awww/wallpaper_engine.cpp.o
 # target to build an object file
 src/awww/wallpaper_engine.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win.dir/build.make CMakeFiles/awww-win.dir/src/awww/wallpaper_engine.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/src/awww/wallpaper_engine.cpp.o
 .PHONY : src/awww/wallpaper_engine.cpp.o
 
 src/awww/wallpaper_engine.i: src/awww/wallpaper_engine.cpp.i
@@ -316,7 +275,6 @@ src/awww/wallpaper_engine.i: src/awww/wallpaper_engine.cpp.i
 # target to preprocess a source file
 src/awww/wallpaper_engine.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win.dir/build.make CMakeFiles/awww-win.dir/src/awww/wallpaper_engine.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/src/awww/wallpaper_engine.cpp.i
 .PHONY : src/awww/wallpaper_engine.cpp.i
 
 src/awww/wallpaper_engine.s: src/awww/wallpaper_engine.cpp.s
@@ -325,7 +283,6 @@ src/awww/wallpaper_engine.s: src/awww/wallpaper_engine.cpp.s
 # target to generate assembly for a file
 src/awww/wallpaper_engine.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win.dir/build.make CMakeFiles/awww-win.dir/src/awww/wallpaper_engine.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/src/awww/wallpaper_engine.cpp.s
 .PHONY : src/awww/wallpaper_engine.cpp.s
 
 src/core/database.o: src/core/database.cpp.o
@@ -335,7 +292,6 @@ src/core/database.o: src/core/database.cpp.o
 src/core/database.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_utils.dir/build.make CMakeFiles/core_utils.dir/src/core/database.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win.dir/build.make CMakeFiles/awww-win.dir/src/core/database.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/src/core/database.cpp.o
 .PHONY : src/core/database.cpp.o
 
 src/core/database.i: src/core/database.cpp.i
@@ -345,7 +301,6 @@ src/core/database.i: src/core/database.cpp.i
 src/core/database.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_utils.dir/build.make CMakeFiles/core_utils.dir/src/core/database.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win.dir/build.make CMakeFiles/awww-win.dir/src/core/database.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/src/core/database.cpp.i
 .PHONY : src/core/database.cpp.i
 
 src/core/database.s: src/core/database.cpp.s
@@ -355,7 +310,6 @@ src/core/database.s: src/core/database.cpp.s
 src/core/database.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_utils.dir/build.make CMakeFiles/core_utils.dir/src/core/database.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win.dir/build.make CMakeFiles/awww-win.dir/src/core/database.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/src/core/database.cpp.s
 .PHONY : src/core/database.cpp.s
 
 src/core/utils.o: src/core/utils.cpp.o
@@ -365,7 +319,6 @@ src/core/utils.o: src/core/utils.cpp.o
 src/core/utils.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_utils.dir/build.make CMakeFiles/core_utils.dir/src/core/utils.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win.dir/build.make CMakeFiles/awww-win.dir/src/core/utils.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/src/core/utils.cpp.o
 .PHONY : src/core/utils.cpp.o
 
 src/core/utils.i: src/core/utils.cpp.i
@@ -375,7 +328,6 @@ src/core/utils.i: src/core/utils.cpp.i
 src/core/utils.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_utils.dir/build.make CMakeFiles/core_utils.dir/src/core/utils.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win.dir/build.make CMakeFiles/awww-win.dir/src/core/utils.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/src/core/utils.cpp.i
 .PHONY : src/core/utils.cpp.i
 
 src/core/utils.s: src/core/utils.cpp.s
@@ -385,7 +337,6 @@ src/core/utils.s: src/core/utils.cpp.s
 src/core/utils.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_utils.dir/build.make CMakeFiles/core_utils.dir/src/core/utils.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win.dir/build.make CMakeFiles/awww-win.dir/src/core/utils.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/src/core/utils.cpp.s
 .PHONY : src/core/utils.cpp.s
 
 vendor/imgui/imgui.o: vendor/imgui/imgui.cpp.o
@@ -545,16 +496,12 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... awww-win"
-	@echo "... awww-win-gui"
 	@echo "... core_utils"
 	@echo "... imgui"
 	@echo "... sqlite3"
 	@echo "... src/awww/awww.o"
 	@echo "... src/awww/awww.i"
 	@echo "... src/awww/awww.s"
-	@echo "... src/awww/gui.o"
-	@echo "... src/awww/gui.i"
-	@echo "... src/awww/gui.s"
 	@echo "... src/awww/main.o"
 	@echo "... src/awww/main.i"
 	@echo "... src/awww/main.s"
