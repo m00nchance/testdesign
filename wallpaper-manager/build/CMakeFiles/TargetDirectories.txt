@@ -1,0 +1,11 @@
+/workspace/wallpaper-manager/build/CMakeFiles/sqlite3.dir
+/workspace/wallpaper-manager/build/CMakeFiles/core_utils.dir
+/workspace/wallpaper-manager/build/CMakeFiles/grim-win.dir
+/workspace/wallpaper-manager/build/CMakeFiles/slurp-win.dir
+/workspace/wallpaper-manager/build/CMakeFiles/awww-win.dir
+/workspace/wallpaper-manager/build/CMakeFiles/edit_cache.dir
+/workspace/wallpaper-manager/build/CMakeFiles/rebuild_cache.dir
+/workspace/wallpaper-manager/build/CMakeFiles/list_install_components.dir
+/workspace/wallpaper-manager/build/CMakeFiles/install.dir
+/workspace/wallpaper-manager/build/CMakeFiles/install/local.dir
+/workspace/wallpaper-manager/build/CMakeFiles/install/strip.dir

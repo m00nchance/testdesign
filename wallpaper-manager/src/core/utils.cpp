@@ -1,37 +1,79 @@
 #include "utils.h"
-#include <windows.h>
-#include <shlobj.h>
 #include <chrono>
 #include <iomanip>
 #include <sstream>
 #include <random>
+#include <cstdlib>
 
-#pragma comment(lib, "shell32.lib")
+#ifdef _WIN32
+    #include <windows.h>
+    #include <shlobj.h>
+    #pragma comment(lib, "shell32.lib")
+#else
+    #include <unistd.h>
+    #include <pwd.h>
+    #include <sys/stat.h>
+    #include <limits.h>
+#endif
 
 namespace utils {
 
 std::string get_executable_path() {
+#ifdef _WIN32
     char path[MAX_PATH];
     GetModuleFileNameA(NULL, path, MAX_PATH);
     std::filesystem::path exe_path(path);
     return exe_path.parent_path().string();
+#else
+    char result[PATH_MAX];
+    ssize_t count = readlink("/proc/self/exe", result, PATH_MAX);
+    if (count != -1) {
+        std::filesystem::path exe_path(std::string(result, count));
+        return exe_path.parent_path().string();
+    }
+    return ".";
+#endif
 }
 
 std::string get_pictures_dir() {
+#ifdef _WIN32
     wchar_t path[MAX_PATH];
     if (SUCCEEDED(SHGetFolderPathW(NULL, CSIDL_MYPICTURES, NULL, 0, path))) {
         return wstring_to_string(path);
     }
     return get_executable_path() + "\\Pictures";
+#else
+    const char* homedir = getenv("HOME");
+    if (!homedir) {
+        struct passwd* pwd = getpwuid(getuid());
+        if (pwd) homedir = pwd->pw_dir;
+    }
+    if (homedir) {
+        return std::string(homedir) + "/Pictures";
+    }
+    return get_executable_path() + "/Pictures";
+#endif
 }
 
 std::string get_app_data_dir() {
+#ifdef _WIN32
     wchar_t path[MAX_PATH];
     if (SUCCEEDED(SHGetFolderPathW(NULL, CSIDL_APPDATA, NULL, 0, path))) {
         std::wstring app_data(path);
         return wstring_to_string(app_data) + "\\WallpaperManager";
     }
     return get_executable_path() + "\\AppData";
+#else
+    const char* homedir = getenv("HOME");
+    if (!homedir) {
+        struct passwd* pwd = getpwuid(getuid());
+        if (pwd) homedir = pwd->pw_dir;
+    }
+    if (homedir) {
+        return std::string(homedir) + "/.config/WallpaperManager";
+    }
+    return get_executable_path() + "/AppData";
+#endif
 }
 
 bool ensure_directory_exists(const std::string& path) {
@@ -50,7 +92,11 @@ std::string generate_filename(const std::string& prefix, const std::string& exte
     
     // Add timestamp
     struct tm buf;
+#ifdef _WIN32
     localtime_s(&buf, &time_t_now);
+#else
+    localtime_r(&time_t_now, &buf);
+#endif
     ss << std::put_time(&buf, "%Y%m%d_%H%M%S");
     
     // Add random suffix to avoid collisions
@@ -69,7 +115,11 @@ std::string get_timestamp_string() {
     std::stringstream ss;
     
     struct tm buf;
+#ifdef _WIN32
     localtime_s(&buf, &time_t_now);
+#else
+    localtime_r(&time_t_now, &buf);
+#endif
     ss << std::put_time(&buf, "%Y-%m-%d %H:%M:%S");
     
     return ss.str();
@@ -78,19 +128,29 @@ std::string get_timestamp_string() {
 std::string wstring_to_string(const std::wstring& wstr) {
     if (wstr.empty()) return "";
     
+#ifdef _WIN32
     int size_needed = WideCharToMultiByte(CP_UTF8, 0, wstr.c_str(), -1, NULL, 0, NULL, NULL);
     std::string str(size_needed - 1, 0);
     WideCharToMultiByte(CP_UTF8, 0, wstr.c_str(), -1, &str[0], size_needed, NULL, NULL);
     return str;
+#else
+    // Simple conversion for Linux (assumes UTF-8)
+    return std::string(wstr.begin(), wstr.end());
+#endif
 }
 
 std::wstring string_to_wstring(const std::string& str) {
     if (str.empty()) return L"";
     
+#ifdef _WIN32
     int size_needed = MultiByteToWideChar(CP_UTF8, 0, str.c_str(), -1, NULL, 0);
     std::wstring wstr(size_needed - 1, 0);
     MultiByteToWideChar(CP_UTF8, 0, str.c_str(), -1, &wstr[0], size_needed);
     return wstr;
+#else
+    // Simple conversion for Linux (assumes UTF-8)
+    return std::wstring(str.begin(), str.end());
+#endif
 }
 
 bool file_exists(const std::string& path) {

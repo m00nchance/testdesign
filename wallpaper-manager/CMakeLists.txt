@@ -1,23 +1,26 @@
 cmake_minimum_required(VERSION 3.16)
-project(WallpaperManager VERSION 1.0 LANGUAGES CXX)
+project(WallpaperManager VERSION 1.0 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
-# Find required packages
-find_package(SQLite3 REQUIRED)
+# Include vendor directory for SQLite3
+include_directories(${CMAKE_SOURCE_DIR}/vendor/sqlite)
+
+# SQLite3 amalgamation (vendored)
+add_library(sqlite3 STATIC vendor/sqlite/sqlite3.c)
+target_include_directories(sqlite3 PUBLIC ${CMAKE_SOURCE_DIR}/vendor/sqlite)
 
 # Include directories
 include_directories(${CMAKE_SOURCE_DIR}/include)
-include_directories(${SQLite3_INCLUDE_DIRS})
 
 # Core utilities
 add_library(core_utils STATIC
     src/core/utils.cpp
     src/core/database.cpp
 )
-target_link_libraries(core_utils PRIVATE ${SQLite3_LIBRARIES})
+target_link_libraries(core_utils PRIVATE sqlite3)
 
 # grim-win executable
 add_executable(grim-win
@@ -42,7 +45,7 @@ add_executable(awww-win
     src/core/utils.cpp
     src/core/database.cpp
 )
-target_link_libraries(awww-win PRIVATE ${SQLite3_LIBRARIES} ole32 shell32 user32 gdi32)
+target_link_libraries(awww-win PRIVATE sqlite3 ole32 shell32 user32 gdi32)
 
 # Install targets
 install(TARGETS grim-win slurp-win awww-win DESTINATION bin)

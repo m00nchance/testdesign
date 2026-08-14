@@ -1,0 +1,1 @@
+/usr/bin/c++ "CMakeFiles/slurp-win.dir/src/slurp/slurp.cpp.o" "CMakeFiles/slurp-win.dir/src/slurp/main.cpp.o" -o slurp-win  -luser32 -lgdi32 

@@ -1,6 +1,7 @@
 #include "database.h"
 #include "utils.h"
 #include <sstream>
+#include <algorithm>
 
 Database::Database() : db(nullptr) {}
 
