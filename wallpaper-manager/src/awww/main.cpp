@@ -13,7 +13,9 @@
 
 #include "awww.h"
 #include "utils.h"
+#ifdef _WIN32
 #include "gui.h"
+#endif
 #include <iostream>
 #include <random>
 #include <cstring>
@@ -298,6 +300,7 @@ int main(int argc, char* argv[]) {
     }
     
     else if (cmd == "gui" || cmd == "pick") {
+#ifdef _WIN32
         // Launch GUI wallpaper selector
         gui::WallpaperGUI app;
         if (!app.initialize(db_path)) {
@@ -305,6 +308,10 @@ int main(int argc, char* argv[]) {
             return 1;
         }
         return app.run();
+#else
+        std::cerr << "Error: GUI mode is only available on Windows.\n";
+        return 1;
+#endif
     }
     
     else {
