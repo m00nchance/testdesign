@@ -3,6 +3,14 @@
 #include <sstream>
 #include <algorithm>
 
+// Define GET_X_LPARAM and GET_Y_LPARAM if not available
+#ifndef GET_X_LPARAM
+#define GET_X_LPARAM(lp) ((int)(short)LOWORD(lp))
+#endif
+#ifndef GET_Y_LPARAM
+#define GET_Y_LPARAM(lp) ((int)(short)HIWORD(lp))
+#endif
+
 // Global pointer for window procedure
 static SlurpWin* g_slurp_instance = nullptr;
 
@@ -219,7 +227,7 @@ void SlurpWin::render_selection(HDC hdc) {
     HPEN pen = CreatePen(PS_SOLID, 2, RGB(0, 255, 0));
     SelectObject(hdc, pen);
     
-    HBRUSH brush = CreateSolidBrush(RGBA(0, 255, 0, 50));
+    HBRUSH brush = CreateSolidBrush(RGB(0, 255, 0));
     SelectObject(hdc, brush);
     
     Rectangle(hdc, x1, y1, x2, y2);

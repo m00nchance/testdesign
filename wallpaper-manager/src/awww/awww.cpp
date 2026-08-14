@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <filesystem>
 #include <sstream>
+#include <fstream>
 
 AwwwWin::AwwwWin() : initialized(false) {}
 
