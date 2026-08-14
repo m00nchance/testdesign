@@ -69,28 +69,28 @@ include CMakeFiles/sqlite3.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/sqlite3.dir/flags.make
 
-CMakeFiles/sqlite3.dir/vendor/sqlite3.c.o: CMakeFiles/sqlite3.dir/flags.make
-CMakeFiles/sqlite3.dir/vendor/sqlite3.c.o: /workspace/wallpaper-manager/vendor/sqlite3.c
-CMakeFiles/sqlite3.dir/vendor/sqlite3.c.o: CMakeFiles/sqlite3.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspace/wallpaper-manager/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/sqlite3.dir/vendor/sqlite3.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/sqlite3.dir/vendor/sqlite3.c.o -MF CMakeFiles/sqlite3.dir/vendor/sqlite3.c.o.d -o CMakeFiles/sqlite3.dir/vendor/sqlite3.c.o -c /workspace/wallpaper-manager/vendor/sqlite3.c
+CMakeFiles/sqlite3.dir/vendor/sqlite/sqlite3.c.o: CMakeFiles/sqlite3.dir/flags.make
+CMakeFiles/sqlite3.dir/vendor/sqlite/sqlite3.c.o: /workspace/wallpaper-manager/vendor/sqlite/sqlite3.c
+CMakeFiles/sqlite3.dir/vendor/sqlite/sqlite3.c.o: CMakeFiles/sqlite3.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspace/wallpaper-manager/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/sqlite3.dir/vendor/sqlite/sqlite3.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/sqlite3.dir/vendor/sqlite/sqlite3.c.o -MF CMakeFiles/sqlite3.dir/vendor/sqlite/sqlite3.c.o.d -o CMakeFiles/sqlite3.dir/vendor/sqlite/sqlite3.c.o -c /workspace/wallpaper-manager/vendor/sqlite/sqlite3.c
 
-CMakeFiles/sqlite3.dir/vendor/sqlite3.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/sqlite3.dir/vendor/sqlite3.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /workspace/wallpaper-manager/vendor/sqlite3.c > CMakeFiles/sqlite3.dir/vendor/sqlite3.c.i
+CMakeFiles/sqlite3.dir/vendor/sqlite/sqlite3.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/sqlite3.dir/vendor/sqlite/sqlite3.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /workspace/wallpaper-manager/vendor/sqlite/sqlite3.c > CMakeFiles/sqlite3.dir/vendor/sqlite/sqlite3.c.i
 
-CMakeFiles/sqlite3.dir/vendor/sqlite3.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/sqlite3.dir/vendor/sqlite3.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /workspace/wallpaper-manager/vendor/sqlite3.c -o CMakeFiles/sqlite3.dir/vendor/sqlite3.c.s
+CMakeFiles/sqlite3.dir/vendor/sqlite/sqlite3.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/sqlite3.dir/vendor/sqlite/sqlite3.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /workspace/wallpaper-manager/vendor/sqlite/sqlite3.c -o CMakeFiles/sqlite3.dir/vendor/sqlite/sqlite3.c.s
 
 # Object files for target sqlite3
 sqlite3_OBJECTS = \
-"CMakeFiles/sqlite3.dir/vendor/sqlite3.c.o"
+"CMakeFiles/sqlite3.dir/vendor/sqlite/sqlite3.c.o"
 
 # External object files for target sqlite3
 sqlite3_EXTERNAL_OBJECTS =
 
-libsqlite3.a: CMakeFiles/sqlite3.dir/vendor/sqlite3.c.o
+libsqlite3.a: CMakeFiles/sqlite3.dir/vendor/sqlite/sqlite3.c.o
 libsqlite3.a: CMakeFiles/sqlite3.dir/build.make
 libsqlite3.a: CMakeFiles/sqlite3.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/workspace/wallpaper-manager/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libsqlite3.a"

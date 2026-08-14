@@ -3,6 +3,10 @@
 
 #include <string>
 
+#ifdef _WIN32
+    #include <windows.h>
+#endif
+
 struct Selection {
     int x;
     int y;
@@ -26,6 +30,7 @@ public:
     Selection parse_slurp_output(const std::string& output);
     
 private:
+#ifdef _WIN32
     // Internal window procedure handler
     static LRESULT CALLBACK window_proc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
     
@@ -41,6 +46,7 @@ private:
     void render_selection(HDC hdc);
     
     HWND overlay_hwnd;
+#endif
     bool selecting;
     int start_x, start_y;
     int current_x, current_y;

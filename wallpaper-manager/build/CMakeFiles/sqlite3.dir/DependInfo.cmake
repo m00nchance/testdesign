@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/workspace/wallpaper-manager/vendor/sqlite3.c" "CMakeFiles/sqlite3.dir/vendor/sqlite3.c.o" "gcc" "CMakeFiles/sqlite3.dir/vendor/sqlite3.c.o.d"
+  "/workspace/wallpaper-manager/vendor/sqlite/sqlite3.c" "CMakeFiles/sqlite3.dir/vendor/sqlite/sqlite3.c.o" "gcc" "CMakeFiles/sqlite3.dir/vendor/sqlite/sqlite3.c.o.d"
   )
 
 # Targets to which this target links.

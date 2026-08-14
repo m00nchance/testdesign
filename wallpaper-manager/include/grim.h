@@ -3,8 +3,12 @@
 
 #include <string>
 #include <vector>
-#include <d3d11.h>
-#include <dxgi1_2.h>
+#include <cstdint>
+
+#ifdef _WIN32
+    #include <d3d11.h>
+    #include <dxgi1_2.h>
+#endif
 
 struct MonitorInfo {
     std::string name;
@@ -40,17 +44,21 @@ public:
     std::string get_last_error() const;
     
 private:
+#ifdef _WIN32
     ID3D11Device* device;
     ID3D11DeviceContext* context;
     IDXGIOutputDuplication* duplication;
+#endif
     bool initialized;
     std::string last_error;
     
     bool init_d3d11();
     bool init_desktop_duplication(int monitor_index);
     void cleanup();
+#ifdef _WIN32
     bool save_texture_to_file(ID3D11Texture2D* texture, const std::string& path);
     bool crop_and_save(ID3D11Texture2D* texture, const std::string& path, int x, int y, int width, int height);
+#endif
 };
 
 #endif // GRIM_H

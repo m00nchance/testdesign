@@ -143,7 +143,6 @@ CMakeFiles/core_utils.dir/src/core/database.cpp.o: /workspace/wallpaper-manager/
   /usr/include/c++/12/bits/stl_vector.h \
   /usr/include/c++/12/bits/stl_bvector.h \
   /usr/include/c++/12/bits/vector.tcc \
-  /workspace/wallpaper-manager/vendor/sqlite3.h \
   /workspace/wallpaper-manager/include/utils.h \
   /usr/include/c++/12/filesystem \
   /usr/include/c++/12/bits/fs_fwd.h \
@@ -221,7 +220,16 @@ CMakeFiles/core_utils.dir/src/core/database.cpp.o: /workspace/wallpaper-manager/
   /usr/include/c++/12/bits/uses_allocator.h \
   /usr/include/c++/12/ext/aligned_buffer.h \
   /usr/include/c++/12/bits/fs_dir.h \
-  /usr/include/c++/12/bits/fs_ops.h
+  /usr/include/c++/12/bits/fs_ops.h \
+  /workspace/wallpaper-manager/vendor/sqlite/sqlite3.h \
+  /usr/include/c++/12/algorithm \
+  /usr/include/c++/12/bits/stl_algo.h \
+  /usr/include/c++/12/bits/algorithmfwd.h \
+  /usr/include/c++/12/bits/stl_heap.h \
+  /usr/include/c++/12/bits/stl_tempbuf.h \
+  /usr/include/c++/12/bits/uniform_int_dist.h \
+  /usr/include/c++/12/pstl/glue_algorithm_defs.h \
+  /usr/include/c++/12/pstl/execution_defs.h
 
 CMakeFiles/core_utils.dir/src/core/utils.cpp.o: /workspace/wallpaper-manager/src/core/utils.cpp \
   /usr/include/stdc-predef.h \
@@ -560,9 +568,21 @@ CMakeFiles/core_utils.dir/src/core/utils.cpp.o: /workspace/wallpaper-manager/src
 
 /usr/include/unistd.h:
 
+/usr/include/c++/12/pstl/glue_numeric_defs.h:
+
+/usr/include/c++/12/bits/stl_numeric.h:
+
+/usr/include/c++/12/numeric:
+
+/usr/include/x86_64-linux-gnu/c++/12/bits/opt_random.h:
+
 /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
 
 /usr/include/alloca.h:
+
+/usr/include/c++/12/bit:
+
+/usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
 
 /usr/include/c++/12/string:
 
@@ -690,10 +710,6 @@ CMakeFiles/core_utils.dir/src/core/utils.cpp.o: /workspace/wallpaper-manager/src
 
 /usr/include/x86_64-linux-gnu/asm/errno.h:
 
-/usr/include/c++/12/pstl/glue_numeric_defs.h:
-
-/usr/include/c++/12/bits/stl_numeric.h:
-
 /usr/lib/gcc/x86_64-linux-gnu/12/include/stdarg.h:
 
 /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
@@ -702,13 +718,7 @@ CMakeFiles/core_utils.dir/src/core/utils.cpp.o: /workspace/wallpaper-manager/src
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls.h:
 
-/usr/include/x86_64-linux-gnu/bits/floatn-common.h:
-
 /usr/include/x86_64-linux-gnu/bits/types/wint_t.h:
-
-/usr/include/asm-generic/posix_types.h:
-
-/usr/include/c++/12/bits/fs_ops.h:
 
 /workspace/wallpaper-manager/src/core/database.cpp:
 
@@ -778,6 +788,10 @@ CMakeFiles/core_utils.dir/src/core/utils.cpp.o: /workspace/wallpaper-manager/src
 
 /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
 
+/usr/include/c++/12/bits/random.tcc:
+
+/usr/include/c++/12/algorithm:
+
 /usr/include/features.h:
 
 /usr/include/c++/12/new:
@@ -785,6 +799,8 @@ CMakeFiles/core_utils.dir/src/core/utils.cpp.o: /workspace/wallpaper-manager/src
 /usr/include/c++/12/bits/quoted_string.h:
 
 /usr/include/c++/12/ext/alloc_traits.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h:
 
@@ -812,15 +828,11 @@ CMakeFiles/core_utils.dir/src/core/utils.cpp.o: /workspace/wallpaper-manager/src
 
 /usr/include/stdint.h:
 
-/usr/include/x86_64-linux-gnu/c++/12/bits/opt_random.h:
-
 /usr/include/c++/12/backward/binders.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/locale.h:
-
-/usr/include/c++/12/bits/localefwd.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
 
@@ -835,8 +847,6 @@ CMakeFiles/core_utils.dir/src/core/utils.cpp.o: /workspace/wallpaper-manager/src
 /usr/include/c++/12/tr1/poly_hermite.tcc:
 
 /usr/include/x86_64-linux-gnu/c++/12/bits/c++allocator.h:
-
-/usr/include/c++/12/bits/random.tcc:
 
 /usr/include/c++/12/ratio:
 
@@ -898,15 +908,9 @@ CMakeFiles/core_utils.dir/src/core/utils.cpp.o: /workspace/wallpaper-manager/src
 
 /usr/include/c++/12/bits/streambuf_iterator.h:
 
-/usr/include/c++/12/numeric:
-
 /usr/include/c++/12/bits/stl_vector.h:
 
 /usr/include/c++/12/bits/stl_bvector.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
-
-/workspace/wallpaper-manager/vendor/sqlite3.h:
 
 /workspace/wallpaper-manager/include/utils.h:
 
@@ -1054,6 +1058,26 @@ CMakeFiles/core_utils.dir/src/core/utils.cpp.o: /workspace/wallpaper-manager/src
 
 /usr/include/c++/12/ext/aligned_buffer.h:
 
+/workspace/wallpaper-manager/vendor/sqlite/sqlite3.h:
+
+/usr/include/c++/12/bits/stl_algo.h:
+
+/usr/include/x86_64-linux-gnu/bits/floatn-common.h:
+
+/usr/include/c++/12/bits/algorithmfwd.h:
+
+/usr/include/asm-generic/posix_types.h:
+
+/usr/include/c++/12/bits/fs_ops.h:
+
+/usr/include/c++/12/bits/stl_heap.h:
+
+/usr/include/c++/12/bits/stl_tempbuf.h:
+
+/usr/include/c++/12/bits/localefwd.h:
+
+/usr/include/c++/12/pstl/glue_algorithm_defs.h:
+
 /usr/include/x86_64-linux-gnu/bits/types/time_t.h:
 
 /usr/include/c++/12/random:
@@ -1099,7 +1123,3 @@ CMakeFiles/core_utils.dir/src/core/utils.cpp.o: /workspace/wallpaper-manager/src
 /usr/include/c++/12/bits/basic_ios.tcc:
 
 /usr/include/c++/12/tr1/riemann_zeta.tcc:
-
-/usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
-
-/usr/include/c++/12/bit:

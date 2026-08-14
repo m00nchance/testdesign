@@ -3,7 +3,11 @@
 
 #include <string>
 #include <vector>
-#include <sqlite3.h>
+#include <cstdint>
+
+// Forward declare sqlite3 types to avoid including header on non-Windows
+struct sqlite3;
+struct sqlite3_stmt;
 
 struct Wallpaper {
     int id;

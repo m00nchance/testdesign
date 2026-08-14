@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/sqlite3.dir/vendor/sqlite3.c.o"
-  "CMakeFiles/sqlite3.dir/vendor/sqlite3.c.o.d"
+  "CMakeFiles/sqlite3.dir/vendor/sqlite/sqlite3.c.o"
+  "CMakeFiles/sqlite3.dir/vendor/sqlite/sqlite3.c.o.d"
   "libsqlite3.a"
   "libsqlite3.pdb"
 )

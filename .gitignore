@@ -1,21 +1,43 @@
 ```
-# CMake build artifacts
-wallpaper-manager/build/
-CMakeCache.txt
+# Build artifacts
+build/
 CMakeFiles/
 Makefile
-cmake_install.cmake
 
 # Compiled objects
 *.o
 *.obj
 *.a
-*.lib
 *.so
 *.dll
-*.dylib
+*.exe
 
-# Archives
+# Dependencies
+vendor/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
+*.env.*
+
+# Editors
+.vscode/
+.idea/
+
+# Coverage
+coverage/
+htmlcov/
+.coverage
+
+# Compression artifacts
 *.zip
 *.gz
 *.tar
