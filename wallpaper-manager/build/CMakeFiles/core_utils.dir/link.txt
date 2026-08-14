@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcore_utils.a CMakeFiles/core_utils.dir/src/core/utils.cpp.o CMakeFiles/core_utils.dir/src/core/database.cpp.o
+/usr/bin/ranlib libcore_utils.a

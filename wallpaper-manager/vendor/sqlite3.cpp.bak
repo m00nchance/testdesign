@@ -1,0 +1,80 @@
+/*
+** 2001-09-15
+**
+** The author disclaims copyright to this source code.  In place of
+** a legal notice, here is a blessing:
+**
+**    May you do good and not evil.
+**    May you find forgiveness for yourself and forgive others.
+**    May you share freely, never taking more than you give.
+**
+*************************************************************************
+** SQLite3 Amalgamation Source File
+** 
+** INSTRUCTIONS:
+** 1. Download the latest sqlite-amalgamation-XXXXXXX.zip from:
+**    https://www.sqlite.org/download.html
+** 2. Extract sqlite3.c from the zip file
+** 3. Replace THIS ENTIRE FILE with the downloaded sqlite3.c
+** 
+** The amalgamation contains all SQLite source code in a single .c file
+** for easier compilation and better performance.
+*/
+
+// This is a placeholder file. Please download the actual sqlite3.c
+// from https://www.sqlite.org/2024/sqlite-amalgamation-3460100.zip
+// (or latest version) and replace this file.
+
+// Minimal stub implementation to allow compilation (NOT FOR PRODUCTION)
+#include "sqlite3.h"
+#include <stdlib.h>
+#include <string.h>
+
+struct sqlite3 {
+    int dummy;
+};
+
+struct sqlite3_stmt {
+    int dummy;
+};
+
+int sqlite3_open(const char *filename, sqlite3 **ppDb) {
+    *ppDb = (sqlite3*)malloc(sizeof(sqlite3));
+    if (!*ppDb) return 1; // SQLITE_NOMEM
+    (*ppDb)->dummy = 0;
+    return 0; // SQLITE_OK
+}
+
+int sqlite3_close(sqlite3 *pDb) {
+    if (pDb) free(pDb);
+    return 0;
+}
+
+int sqlite3_exec(sqlite3 *pDb, const char *sql, int (*callback)(void*,int,char**,char**), void *arg, char **errmsg) {
+    // Stub - does nothing
+    return 0;
+}
+
+int sqlite3_prepare_v2(sqlite3 *pDb, const char *zSql, int nByte, sqlite3_stmt **ppStmt, const char **pzTail) {
+    *ppStmt = (sqlite3_stmt*)malloc(sizeof(sqlite3_stmt));
+    if (!*ppStmt) return 1;
+    (*ppStmt)->dummy = 0;
+    return 0;
+}
+
+int sqlite3_step(sqlite3_stmt *pStmt) {
+    return 101; // SQLITE_DONE
+}
+
+int sqlite3_finalize(sqlite3_stmt *pStmt) {
+    if (pStmt) free(pStmt);
+    return 0;
+}
+
+const char *sqlite3_errmsg(sqlite3 *pDb) {
+    return "Stub implementation - download real sqlite3.c";
+}
+
+const char *sqlite3_sqlite_version(void) {
+    return "3.0.0-stub";
+}

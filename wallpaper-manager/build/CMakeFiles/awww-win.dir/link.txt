@@ -1,0 +1,1 @@
+/usr/bin/c++ "CMakeFiles/awww-win.dir/src/awww/awww.cpp.o" "CMakeFiles/awww-win.dir/src/awww/wallpaper_engine.cpp.o" "CMakeFiles/awww-win.dir/src/awww/main.cpp.o" "CMakeFiles/awww-win.dir/src/core/utils.cpp.o" "CMakeFiles/awww-win.dir/src/core/database.cpp.o" -o awww-win  libsqlite3.a -lole32 -lshell32 -luser32 -lgdi32 
