@@ -2,6 +2,8 @@
 # Build artifacts
 build/
 CMakeFiles/
+Makefile
+cmake_install.cmake
 *.dir/
 
 # Dependencies
@@ -12,6 +14,7 @@ CMakeFiles/
 # Temporary files
 *.tmp
 *.temp
+*~
 
 # Logs
 *.log
@@ -19,7 +22,7 @@ CMakeFiles/
 # Environment
 .env
 .env.local
-*.env.*
+.env.*
 
 # Editors
 .vscode/
@@ -27,7 +30,7 @@ CMakeFiles/
 *.swp
 *.swo
 
-# OS specific
+# OS
 .DS_Store
 Thumbs.db
 
@@ -43,21 +46,18 @@ __pycache__/
 *.pyd
 .Python
 *.so
-.PyInstaller/
-.pytest_cache/
-.mypy_cache/
+*.egg-info/
+.eggs/
 
 # Node
 node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
 # Java
 *.class
 *.jar
 *.war
 *.ear
+*.nar
 target/
 .gradle/
 build/
@@ -66,29 +66,38 @@ build/
 *.o
 *.a
 *.obj
-*.out
+*.lib
 *.exe
 *.dll
 *.so
 *.dylib
+*.ncb
+*.sdf
+*.suo
+*.pdb
+*.ilk
+*.res
+*.idb
+*.aps
+
+# Rust
+Cargo.lock
+target/
 
 # Go
 *.exe
-*.exe~
 *.dll
 *.so
 *.dylib
-
-# Rust
-target/
-Cargo.lock
+*.test
+*.prof
 
 # Ruby
 *.gem
 *.rbc
 .bundle/
+.ruby-version
 vendor/bundle/
-Gemfile.lock
 
 # Compression
 *.zip

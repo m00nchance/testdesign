@@ -4,7 +4,7 @@
 # compile C with /usr/bin/cc
 C_DEFINES = -DSQLITE_ENABLE_JSON1 -DSQLITE_THREADSAFE=1 -D_CRT_SECURE_NO_WARNINGS
 
-C_INCLUDES = -I/workspace/wallpaper-manager/vendor/sqlite -I/workspace/wallpaper-manager/include
+C_INCLUDES = -I/workspace/wallpaper-manager/vendor/sqlite -I/workspace/wallpaper-manager/vendor/imgui -I/workspace/wallpaper-manager/vendor/stb -I/workspace/wallpaper-manager/include
 
 C_FLAGS = 
 

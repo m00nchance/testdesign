@@ -64,10 +64,10 @@ CMAKE_BINARY_DIR = /workspace/wallpaper-manager/build
 
 # The main recursive "all" target.
 all: CMakeFiles/sqlite3.dir/all
+all: CMakeFiles/imgui.dir/all
 all: CMakeFiles/core_utils.dir/all
-all: CMakeFiles/grim-win.dir/all
-all: CMakeFiles/slurp-win.dir/all
 all: CMakeFiles/awww-win.dir/all
+all: CMakeFiles/awww-win-gui.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -76,10 +76,10 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/sqlite3.dir/clean
+clean: CMakeFiles/imgui.dir/clean
 clean: CMakeFiles/core_utils.dir/clean
-clean: CMakeFiles/grim-win.dir/clean
-clean: CMakeFiles/slurp-win.dir/clean
 clean: CMakeFiles/awww-win.dir/clean
+clean: CMakeFiles/awww-win-gui.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -89,7 +89,7 @@ clean: CMakeFiles/awww-win.dir/clean
 CMakeFiles/sqlite3.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3.dir/build.make CMakeFiles/sqlite3.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3.dir/build.make CMakeFiles/sqlite3.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspace/wallpaper-manager/build/CMakeFiles --progress-num=17,18 "Built target sqlite3"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspace/wallpaper-manager/build/CMakeFiles --progress-num=22,23 "Built target sqlite3"
 .PHONY : CMakeFiles/sqlite3.dir/all
 
 # Build rule for subdir invocation for target.
@@ -109,13 +109,39 @@ CMakeFiles/sqlite3.dir/clean:
 .PHONY : CMakeFiles/sqlite3.dir/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/imgui.dir
+
+# All Build rule for target.
+CMakeFiles/imgui.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/imgui.dir/build.make CMakeFiles/imgui.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/imgui.dir/build.make CMakeFiles/imgui.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspace/wallpaper-manager/build/CMakeFiles --progress-num=16,17,18,19,20,21 "Built target imgui"
+.PHONY : CMakeFiles/imgui.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/imgui.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /workspace/wallpaper-manager/build/CMakeFiles 6
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/imgui.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /workspace/wallpaper-manager/build/CMakeFiles 0
+.PHONY : CMakeFiles/imgui.dir/rule
+
+# Convenience name for target.
+imgui: CMakeFiles/imgui.dir/rule
+.PHONY : imgui
+
+# clean rule for target.
+CMakeFiles/imgui.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/imgui.dir/build.make CMakeFiles/imgui.dir/clean
+.PHONY : CMakeFiles/imgui.dir/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/core_utils.dir
 
 # All Build rule for target.
 CMakeFiles/core_utils.dir/all: CMakeFiles/sqlite3.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_utils.dir/build.make CMakeFiles/core_utils.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_utils.dir/build.make CMakeFiles/core_utils.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspace/wallpaper-manager/build/CMakeFiles --progress-num=7,8,9 "Built target core_utils"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspace/wallpaper-manager/build/CMakeFiles --progress-num=13,14,15 "Built target core_utils"
 .PHONY : CMakeFiles/core_utils.dir/all
 
 # Build rule for subdir invocation for target.
@@ -133,58 +159,6 @@ core_utils: CMakeFiles/core_utils.dir/rule
 CMakeFiles/core_utils.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_utils.dir/build.make CMakeFiles/core_utils.dir/clean
 .PHONY : CMakeFiles/core_utils.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/grim-win.dir
-
-# All Build rule for target.
-CMakeFiles/grim-win.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/grim-win.dir/build.make CMakeFiles/grim-win.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/grim-win.dir/build.make CMakeFiles/grim-win.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspace/wallpaper-manager/build/CMakeFiles --progress-num=10,11,12,13 "Built target grim-win"
-.PHONY : CMakeFiles/grim-win.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/grim-win.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /workspace/wallpaper-manager/build/CMakeFiles 4
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/grim-win.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /workspace/wallpaper-manager/build/CMakeFiles 0
-.PHONY : CMakeFiles/grim-win.dir/rule
-
-# Convenience name for target.
-grim-win: CMakeFiles/grim-win.dir/rule
-.PHONY : grim-win
-
-# clean rule for target.
-CMakeFiles/grim-win.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/grim-win.dir/build.make CMakeFiles/grim-win.dir/clean
-.PHONY : CMakeFiles/grim-win.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/slurp-win.dir
-
-# All Build rule for target.
-CMakeFiles/slurp-win.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/slurp-win.dir/build.make CMakeFiles/slurp-win.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/slurp-win.dir/build.make CMakeFiles/slurp-win.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspace/wallpaper-manager/build/CMakeFiles --progress-num=14,15,16 "Built target slurp-win"
-.PHONY : CMakeFiles/slurp-win.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/slurp-win.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /workspace/wallpaper-manager/build/CMakeFiles 3
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/slurp-win.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /workspace/wallpaper-manager/build/CMakeFiles 0
-.PHONY : CMakeFiles/slurp-win.dir/rule
-
-# Convenience name for target.
-slurp-win: CMakeFiles/slurp-win.dir/rule
-.PHONY : slurp-win
-
-# clean rule for target.
-CMakeFiles/slurp-win.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/slurp-win.dir/build.make CMakeFiles/slurp-win.dir/clean
-.PHONY : CMakeFiles/slurp-win.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/awww-win.dir
@@ -211,6 +185,33 @@ awww-win: CMakeFiles/awww-win.dir/rule
 CMakeFiles/awww-win.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win.dir/build.make CMakeFiles/awww-win.dir/clean
 .PHONY : CMakeFiles/awww-win.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/awww-win-gui.dir
+
+# All Build rule for target.
+CMakeFiles/awww-win-gui.dir/all: CMakeFiles/sqlite3.dir/all
+CMakeFiles/awww-win-gui.dir/all: CMakeFiles/imgui.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspace/wallpaper-manager/build/CMakeFiles --progress-num=7,8,9,10,11,12 "Built target awww-win-gui"
+.PHONY : CMakeFiles/awww-win-gui.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/awww-win-gui.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /workspace/wallpaper-manager/build/CMakeFiles 14
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/awww-win-gui.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /workspace/wallpaper-manager/build/CMakeFiles 0
+.PHONY : CMakeFiles/awww-win-gui.dir/rule
+
+# Convenience name for target.
+awww-win-gui: CMakeFiles/awww-win-gui.dir/rule
+.PHONY : awww-win-gui
+
+# clean rule for target.
+CMakeFiles/awww-win-gui.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/awww-win-gui.dir/build.make CMakeFiles/awww-win-gui.dir/clean
+.PHONY : CMakeFiles/awww-win-gui.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

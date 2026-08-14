@@ -8,10 +8,12 @@
 //   tag ID TAG   Add tag to wallpaper
 //   fav ID       Toggle favorite
 //   import DIR   Import all images from directory
+//   gui          Launch graphical wallpaper selector
 //   random       Set random wallpaper
 
 #include "awww.h"
 #include "utils.h"
+#include "gui.h"
 #include <iostream>
 #include <random>
 #include <cstring>
@@ -31,6 +33,7 @@ void print_help() {
     std::cout << "  favorites          List favorite wallpapers\n";
     std::cout << "  rating ID RATING   Set rating (0-5)\n";
     std::cout << "  import DIR         Import all images from directory\n";
+    std::cout << "  gui                Launch graphical wallpaper selector\n";
     std::cout << "  random             Set random wallpaper\n";
     std::cout << "  tags               List all tags\n";
     std::cout << "  init               Initialize database\n";
@@ -44,6 +47,7 @@ void print_help() {
     std::cout << "  awww-win tag 3 landscape               # Add 'landscape' tag to ID 3\n";
     std::cout << "  awww-win fav 7                         # Toggle favorite for ID 7\n";
     std::cout << "  awww-win import C:\\Wallpapers          # Import all images\n";
+    std::cout << "  awww-win gui                           # Launch GUI selector\n";
     std::cout << "  awww-win random                        # Set random wallpaper\n";
 }
 
@@ -291,6 +295,16 @@ int main(int argc, char* argv[]) {
             std::cout << "  " << tag << "\n";
         }
         return 0;
+    }
+    
+    else if (cmd == "gui" || cmd == "pick") {
+        // Launch GUI wallpaper selector
+        gui::WallpaperGUI app;
+        if (!app.initialize(db_path)) {
+            std::cerr << "Error: Failed to initialize GUI. Make sure database is initialized.\n";
+            return 1;
+        }
+        return app.run();
     }
     
     else {

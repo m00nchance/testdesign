@@ -1,1 +1,0 @@
-/usr/bin/c++ "CMakeFiles/grim-win.dir/src/grim/grim.cpp.o" "CMakeFiles/grim-win.dir/src/grim/main.cpp.o" "CMakeFiles/grim-win.dir/src/core/utils.cpp.o" -o grim-win  -ld3d11 -ldxgi 
